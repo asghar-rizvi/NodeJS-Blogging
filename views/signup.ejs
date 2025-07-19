@@ -1,0 +1,51 @@
+<%- include('partials/header.ejs') %>
+
+<title>Sign Up</title>
+
+<body>
+  <%- include('partials/nav.ejs') %>
+
+  <div class="container">
+    <form action="/user/signup" method="POST">
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+                <input
+                name = "fullName"
+                type="text"
+                class="form-control"
+                id="fullName"
+                aria-describedby="fullName"
+                />
+
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name = "email"
+        />
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          name = "password"
+        />
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="container mt-3">
+        <% if (message) { %>
+            <div class="alert alert-danger" role="alert">
+            <strong>Message:</strong> <%= message %>
+            </div>
+        <% } %>
+    </div>
+
+  <%- include('partials/script.ejs') %>
+</body>
