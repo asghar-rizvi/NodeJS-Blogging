@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs') %>
+
+<title>Home Page</title> 
+
+<body>
+  <%- include('partials/nav.ejs') %>
+   
+  <div class="container mt-5">
+  <h2 class="mb-4">Create a Blog Post</h2>
+  <form action="/add-blog" method="POST" enctype="multipart/form-data">
+    
+    <!-- Cover Image Upload -->
+    <div class="mb-3">
+      <label for="coverImage" class="form-label">Cover Image</label>
+      <input class="form-control" type="file" id="coverImage" name="coverImage" accept="image/*" required>
+    </div>
+
+    <!-- Title Input -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Enter blog title" required>
+    </div>
+
+    <!-- Description Textarea -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="5" placeholder="Write your blog description here..." required></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+  <%- include('partials/script.ejs') %>

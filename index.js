@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const { checkAuthentication } = require('./middleware/authentication');
 
 const app = express();
 const PORT = 8000;
@@ -15,6 +17,9 @@ app.set('views', path.resolve('./views'))
 
 //middleWares
 app.use(express.urlencoded({ urlencoded:false }));
+app.use(cookieParser());
+app.use(checkAuthentication("token"));
+app.use(express.static(path.resolve('./public')));
 
 //Routes
 const routerBlog = require('./routes/blog');

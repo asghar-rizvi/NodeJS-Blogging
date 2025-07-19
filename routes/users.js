@@ -1,16 +1,26 @@
 const { Router } = require('express');
 const router = Router();
-const { handleUserSignUp, handleUserSignIn } = require('../controllers/users');
+const { handleUserSignUp, handleUserSignIn , handleUserLogout, handleUserUpdate} = require('../controllers/users');
+const upload = require('../middleware/userImageMulterHandler');
 
 router.get('/signup', async (req,res)=>{
-    res.render('signup', { message : null})
+    res.render('signup')
 })
 
 router.get('/signin', async (req,res)=>{
-    res.render('signin', { message : null})
+    return res.render('signin')
 })
 
 router.post('/signup', handleUserSignUp);
 router.post('/signin', handleUserSignIn);
+
+router.get('/logout', handleUserLogout)
+
+router.get('/update-user', async (req, res) => {
+  return res.render('updateProfile', { user: req.user });
+});
+
+router.post('/update-user', upload.single('profileImage'), handleUserUpdate);
+
 
 module.exports = router;
