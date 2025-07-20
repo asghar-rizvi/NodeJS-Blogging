@@ -16,6 +16,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'))
 
 //middleWares
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.use(express.urlencoded({ urlencoded:false }));
 app.use(cookieParser());
 app.use(checkAuthentication("token"));

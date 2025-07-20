@@ -1,17 +1,15 @@
 <%- include('partials/header.ejs') %>
 
-<title>Home Page</title> 
+<title>View All Blogs</title> 
 
 <body>
   <%- include('partials/nav.ejs') %>
 
   <div class="container mt-5">
-    <% if (locals.user) { %>
-      <h1>Welcome <%= user.fullName %></h1>
-    <% } %>
-  </div>
+    <h1>View Blogs On Blogs For All</h1>
+    <h4>Create Your Own Account To Upload Blogs</h4>
 
-       <div class="container mt-4">
+    <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
             <% blogs.forEach(function(blog) { %>
             <div class="col">
@@ -21,11 +19,14 @@
                         <h5 class="card-title" style="font-size: 1rem;"><%= blog.title %></h5>
                         <p class="card-text" style="font-size: 0.9rem;"><%= blog.description %></p>
                         <a href="/<%= blog.id %>" class="btn btn-sm btn-primary">View</a>
+
                     </div>
                 </div>
             </div>
             <% }); %>
         </div>
     </div>
+
+
 
   <%- include('partials/script.ejs') %>

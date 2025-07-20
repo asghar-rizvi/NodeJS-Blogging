@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { handleUserSignUp, handleUserSignIn , handleUserLogout, handleUserUpdate} = require('../controllers/users');
+const { handleUserSignUp, handleUserSignIn , handleUserLogout} = require('../controllers/users');
 const upload = require('../middleware/userImageMulterHandler');
 
 router.get('/signup', async (req,res)=>{
@@ -16,11 +16,7 @@ router.post('/signin', handleUserSignIn);
 
 router.get('/logout', handleUserLogout)
 
-router.get('/update-user', async (req, res) => {
-  return res.render('updateProfile', { user: req.user });
-});
 
-router.post('/update-user', upload.single('profileImage'), handleUserUpdate);
 
 
 module.exports = router;
