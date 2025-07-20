@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 const jwt = require('jsonwebtoken');
-const SECERETE_KEY = '$asghar$00$'
+SECERETE_KEY = process.env.SECERETE_KEY 
 
  function createJWT(user){
     return  jwt.sign({
