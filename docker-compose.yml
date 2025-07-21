@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: blog-app
+    ports:
+      - "8000:8000"  
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/BlogForAll
+      - SECERETE_KEY=$asghar$00$
+    volumes:
+      - .:/app
+    restart: always
+
+  mongo:
+    image: mongo:6
+    container_name: blog-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+volumes:
+  mongo-data:
