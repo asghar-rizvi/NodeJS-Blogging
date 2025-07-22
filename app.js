@@ -35,6 +35,11 @@ const routerUser = require('./routes/users');
 app.use('/', routerBlog);
 app.use('/user', routerUser);
 
+app.get('/checkInstnace/checkContainerInstance', (req, res) => {
+  res.send(`Hello from ${process.env.HOSTNAME || "unknown instance"}!`);
+});
+
+
 
 
 app.listen(PORT, ()=>{console.log('Server Started at ',PORT)})
